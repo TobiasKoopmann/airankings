@@ -1,0 +1,134 @@
+{
+  "core": {
+    "AAAI": [],
+    "IJCAI": [],
+    "ECAI": [],
+    "Artificial Intelligence": [
+      "Artif. Intell."
+    ],
+    "JAIR": [
+      "J. Artif. Intell. Res."
+    ]
+  },
+  "machine_learning_and_data_mining": {
+    "NIPS/NeurIPS": [
+      "NeurIPS",
+      "NIPS"
+    ],
+    "ICML": [],
+    "KDD": [],
+    "WWW": [],
+    "HT": [],
+    "WSDM": [],
+    "SIGIR": [],
+    "COLT": [],
+    "ICDM": [],
+    "CIKM": [],
+    "AISTATS": [],
+    "SDM": [],
+    "ECML/PKDD": [
+      "ECML",
+      "PKDD"
+    ],
+    "ECIR": [],
+    "PAKDD": [],
+    "RecSys": [],
+    "IJCNN": [],
+    "ICANN": [],
+    "ILP": [],
+    "ICLR": [],
+    "ACML": [],
+    "ESANN": [],
+    "MLJ": ["Mach. Learn."],
+    "JMLR": ["J. Mach. Learn. Res."],
+    "IEEE Trans. Neural Networks": [],
+    "DMKD": ["Data Min. Knowl. Discov."]
+  },
+  "natural_language_processing": {
+    "ACL": [],
+    "EMNLP": [],
+    "NAACL": [],
+    "COLING": [],
+    "EACL": [],
+    "CoNLL": [],
+    "IJCNLP": []
+  },
+  "problem_solving": {
+    "KR": [],
+    "CP": [],
+    "SAT": [],
+    "CPAIOR": [],
+    "SARA": [],
+    "SOCS": []
+  },
+  "cognitive_ai": {
+    "Cognitive Science": [
+      "CogSci"
+    ],
+    "Cognitive System Research": [
+      "Cogn. Syst. Res."
+    ],
+    "Cognitive Processing": [
+      "Cogn. Process."
+    ]
+  },
+  "knowledge_representation": {
+    "AAMAS": [],
+    "ICAPS": [],
+    "ISWC": [
+      "International Semantic Web Conference"
+    ],
+    "ESWC": [],
+    "CADE": [],
+    "LPAR": [],
+    "JELIA": [],
+    "TABLEAUX": [],
+    "TARK": [],
+    "ICLP": [],
+    "RuleML+RR": [],
+    "ICCBR": []
+  },
+  "uncertainty": {
+    "UAI": [],
+    "Autonomous Agents and Multi-Agent Systems":  [
+      "Auton. Agents Multi Agent Syst."
+    ],
+    "AIIDE": [],
+    "WINE": [],
+    "ADT": [],
+    "PGM": []
+  },
+  "computer_vision": {
+    "CVPR": [],
+    "ICCV": [],
+    "ECCV": [],
+    "ACCV": [],
+    "TPAMI": [
+      "IEEE Trans. Pattern Anal. Mach. Intell."
+    ]
+  },
+  "interaction": {
+    "CHI": [],
+    "HCI": [],
+    "UbiComp": [],
+    "IUI": [],
+    "HCOMP": []
+  },
+  "robotik": {
+    "RSS": [
+      "Robotics: Science and Systems"
+    ],
+    "IROS": [],
+    "Robotics and Autonomous Systems": [
+      "Robotics Auton. Syst."
+    ],
+    "ISRR": [],
+    "ICRA": [],
+    "EWRL": [],
+    "Humanoids": [],
+    "CoRL": []
+  },
+  "ethic_and_society": {
+    "AIES": []
+  }
+}

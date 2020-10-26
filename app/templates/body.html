@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="jumbotron text-center bg-light">
+        <h1> {{ lang["headline"] | safe }} </h1>
+        <div class="row mb-4">
+            <div class="col-md-2">
+                <b> {{ lang["background-tag"] | safe }} </b>
+            </div>
+            <div id="background" class="col-md-10" style="text-align: left">
+                <p class="collapse" id="background-text" aria-expanded="false">
+                    {{ lang["background"] | safe }}
+                </p>
+                <a id="background-text-show" role="button" class="collapsed" data-toggle="collapse" href="#background-text" aria-expanded="false" aria-controls="background-text"></a>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 10px">
+            <div class="col-md-2">
+                <b> {{ lang["Usage-tag"] | safe }} </b>
+            </div>
+            <div class="col-md-10" style="text-align: left">
+                <div>
+                    {{ lang["Usage"] | safe }}
+                </div>
+                <div>
+                    <small>
+                        {{ lang["Usagenote"] | safe }}
+                    </small>
+                </div>
+            </div>
+        </div>
+        in {% block select_country %}{% endblock %} from
+        <label for="fromyear"></label>
+        <select id="fromyear" name="fromyear" class="custom-select custom-select-sm col-md-2">
+            {% if yearstart %}
+                {% set selected_year = yearstart %}
+            {% else %}
+                {% set selected_year = 2000 %}
+            {% endif %}
+            {% for year in range(1970, 2021) %}
+            {% if year == selected_year %}
+            <option selected="selected" value="{{ year }}">{{ year }}</option>
+            {% else %}
+            <option value="{{ year }}">{{ year }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        to
+        <label for="toyear"></label>
+        <select id="toyear" name="toyear" class="custom-select custom-select-sm col-md-2">
+            {% if yearend %}
+                {% set selected_year = yearend %}
+            {% else %}
+                {% set selected_year = 2019 %}
+            {% endif %}
+            {% for year in range(1970, 2021) %}
+            {% if year == selected_year %}
+            <option selected="selected" value="{{ year }}">{{ year }}</option>
+            {% else %}
+            <option value="{{ year }}">{{ year }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        <br>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            {% block options %}{% endblock %}
+        </div>
+        <div class="col-9">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <input type="hidden" id="page" name="page" value="1">
+{% endblock %}

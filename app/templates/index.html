@@ -1,0 +1,17 @@
+{% extends "body.html" %}
+
+{% block select_country %}
+    <select id="country" name="country"  class="custom-select custom-select-sm col-md-2">
+        <option value="all">All</option>
+        {% for country in countries %}
+            <option value="{{ country}}">{{ country }}</option>
+        {% endfor %}
+    </select>
+{% endblock %}
+
+{% block options %}
+    {{ html }}
+{% endblock %}
+
+{% block content %}
+{% endblock %}

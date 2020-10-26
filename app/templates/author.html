@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center py-5">
+            <h1 class="display-3">{{ name }}</h1>
+        </div>
+    </div>
+
+    {% if stats["achievements"] %}
+    <div class="row mb-3">
+        <div class="col-4 text-right">
+            <p class="display-4">
+                <mark>{{ stats["number_of_publications"] }}</mark>
+                {{ lang["authorpage-publications"] | safe }}
+            </p>
+            <p class="display-4">
+                <mark>{{ stats["number_of_venues"] }}</mark>
+                {{ lang["authorpage-venue"] | safe }}
+            </p>
+            <p class="display-4">h-Index
+                <mark>{{ stats["h_index"] }}</mark>
+            </p>
+            {% if stats['googlehindex'] %}
+            <p class="display-4">Google's h-Index
+                <mark>{{ stats["googlehindex"] }}</mark>
+            </p>
+            {% endif %}
+        </div>
+
+        <div class="col-4 border-left">
+            {% if affiliation %}
+            <h3>{{ lang["authorpage-affiliation"] | safe }}</h3>
+            {% for affi in affiliation %}
+            <span> {{ affi }} </span> <br/>
+            {% endfor %}
+            {% endif %}
+            <h3>Links</h3>
+            <ul class="list-unstyled">
+                <li><img src="{{ url_for('static', filename='image/dblp.png') }}" width="16px" height="16px">&nbsp;<a
+                        href="{{ special['dblp'] }}" target="_blank">DBLP</a></li>
+                {% if special['gs'] %}
+                <li><img src="{{  url_for('static', filename='image/scholar-favicon.ico') }}" width="16px"
+                         height="16px">&nbsp;<a
+                        href="{{ special['gs'] }}" target="_blank">Google Scholar</a></li>
+                {% endif %}
+                {% if special['orcid'] %}
+                <li><img src="{{ url_for('static', filename='image/orcid.gif') }}" width="16px" height="16px">&nbsp;<a
+                        href="{{ special['orcid'] }}" target="_blank">ORCID</a></li>
+                {% endif %}
+                {% if special['linkedin'] %}
+                <li><img src="{{ url_for('static', filename='image/linkedin.png') }}" width="16px"
+                         height="16px">&nbsp;<a
+                        href="{{ special['linkedin'] }}" target="_blank">LinkedIn</a></li>
+                {% endif %}
+                {% if special['twitter'] %}
+                <li><img src="{{ url_for('static', filename='image/Twitter_Logo_Blue.png') }}" width="16px"
+                         height="16px">&nbsp;<a
+                        href="{{ special['twitter'] }}" target="_blank">Twitter</a></li>
+                {% endif %}
+                {% if special['github'] %}
+                {% for git in special['github'] %}
+                <li><img src="{{ url_for('static', filename='image/GitHub-Mark.png') }}" width="16px" height="16px">&nbsp;<a
+                        href="{{ special['github'] }}" target="_blank">Github</a></li>
+                {% endfor %}
+                {% endif %}
+                {% for url in urls %}
+                <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-4 border-left">
+            <h3>{{ lang["authorpageAdditionalInfos"] | safe }}</h3>
+            <h5>Achievements</h5>
+            {% for achi in stats["achievements"] %}
+            <mark>{{ achi }} </mark><br>
+            {% endfor %}
+            {% if stats["googlecits"] %}
+            <h5> Google Citations</h5>
+            <mark> {{ stats["googlecits"] }}</mark>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="row mb-3">
+            <div class="col-6 text-right">
+                <p class="display-4">
+                    <mark>{{ stats["number_of_publications"] }}</mark>
+                    {{ lang["authorpage-publications"] | safe }}
+                </p>
+                <p class="display-4">
+                    <mark>{{ stats["number_of_venues"] }}</mark>
+                    {{ lang["authorpage-venue"] | safe }}
+                </p>
+                <p class="display-4">H Index
+                    <mark>{{ stats["h_index"] }}</mark>
+                </p>
+            </div>
+
+            <div class="col-6 border-left">
+                {% if affiliation %}
+                <h3>{{ lang["authorpage-affiliation"] | safe }}</h3>
+                {% for affi in affiliation %}
+                <span>
+                    {{ affi }}
+                </span>
+                <br/>
+                {% endfor %}
+                {% endif %}
+                <h3>Links</h3>
+                <ul class="list-unstyled">
+                    <li><img src="{{ url_for('static', filename='image/dblp.png') }}" width="16px"
+                             height="16px">&nbsp;<a
+                            href="{{ special['dblp'] }}" target="_blank">DBLP</a></li>
+                    {% if special['gs'] %}
+                    <li><img src="{{  url_for('static', filename='image/scholar-favicon.ico') }}" width="16px"
+                             height="16px">&nbsp;<a
+                            href="{{ special['gs'] }}" target="_blank">Google Scholar</a></li>
+                    {% endif %}
+                    {% if special['orcid'] %}
+                    <li><img src="{{ url_for('static', filename='image/orcid.gif') }}" width="16px" height="16px">&nbsp;<a
+                            href="{{ special['orcid'] }}" target="_blank">ORCID</a></li>
+                    {% endif %}
+                    {% if special['linkedin'] %}
+                    <li><img src="{{ url_for('static', filename='image/linkedin.png') }}" width="16px"
+                             height="16px">&nbsp;<a
+                            href="{{ special['linkedin'] }}" target="_blank">LinkedIn</a></li>
+                    {% endif %}
+                    {% if special['twitter'] %}
+                    <li><img src="{{ url_for('static', filename='image/Twitter_Logo_Blue.png') }}" width="16px"
+                             height="16px">&nbsp;<a
+                            href="{{ special['twitter'] }}" target="_blank">Twitter</a></li>
+                    {% endif %}
+                    {% if special['github'] %}
+                    {% for git in special['github'] %}
+                    <li><img src="{{ url_for('static', filename='image/GitHub-Mark.png') }}" width="16px" height="16px">&nbsp;<a
+                            href="{{ special['github'] }}" target="_blank">Github</a></li>
+                    {% endfor %}
+                    {% endif %}
+                    {% for url in urls %}
+                    <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <table class="table table-striped table-hover" id="publication">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>{{ lang["authorpagetableVenue"] | safe }}</th>
+            <th>{{ lang["authorpagetableYear"] | safe }}</th>
+            <th>{{ lang["authorpagetableCits"] | safe }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pub in pubs %}
+        <tr>
+            <td style="width:80%">{{ pub['title'] }}
+                <a class="text-right" href="https://dblp.uni-trier.de/rec/bibtex/{{ pub['key'] }}">
+                    <img alt="" src="{{ url_for('static', filename='image/download.png') }}" class="icon">
+                </a></td>
+            <td class="text-center" style="width:20%">{{ pub['venue'] }}</td>
+            <td class="text-center" style="width:10%">{{ pub['year'] }}</td>
+            <td class="text-center" style="width:10%">{{ pub['cits'] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

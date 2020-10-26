@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+    <!-- BootStrap's CSS File -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- DataTables' CSS Files -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
+
+    {% if title %}
+    <title>{{ title }} - A.I. Author Rankings</title>
+    {% else %}
+    <title>A.I.Rankings</title>
+    {% endif %}
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">A.I. Author Rankings</a></li>
+        </ul>
+        <div class="navbar-nav">
+            <div id="navbarlanguage">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLang" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ lang["Select Language"] | safe }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" id="ger" value="ger">Deutsch</a>
+                            <a class="dropdown-item" id="eng" value="eng">English</a>
+                        </div>
+
+                </ul>
+            </div>
+
+            <div  id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    {% if main_page %}
+                    {#
+                    <li class="nav-item"><span class="nav-link create-shareable-link" data-toggle="modal"
+                                               data-target="#shareableLinkModal">
+                                        <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                        Share your Ranking
+                                    </span></li>
+                    #}
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ lang["nav-link dropdown-toggle"] | safe}}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/">Core</a>
+                            <a class="dropdown-item" href="/ps">Problem Solving</a>
+                            <a class="dropdown-item" href="/kr">Knowledge Representation</a>
+                            <a class="dropdown-item" href="/u">Uncertainty</a>
+                            <a class="dropdown-item" href="/ml">Machine Learning</a>
+                            <a class="dropdown-item" href="/cv">Computer Vision</a>
+                            <a class="dropdown-item" href="/nlp">NLP</a>
+                            <a class="dropdown-item" href="/i">Interaction</a>
+                            <a class="dropdown-item" href="/r">Robotics</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/all">whole AI</a>
+                        </div>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="shareableLinkModal" tabindex="-1" role="dialog" aria-labelledby="shareableLinkModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Shareable Link</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span class="ptitle" id="shareable-link"></span>
+                <br>
+                <button class="btn btn-secondary" id="copybutton"> Copy Link</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div id="main-content" class="container">
+        {% block body %}{% endblock %}
+    </div>
+</div>
+
+<div class="container-fluid bg-light text-center pt-5 pb-5 mt-5">
+    <small>Copyright &copy;2019 Universität Würzburg</small><br/>
+    <small>{{ lang[18] | safe }} </small><br/>
+    <small> <a href="https://www.uni-wuerzburg.de/sonstiges/impressum/" title="Impressum">Impressum</a>
+        | <a href="https://www.uni-wuerzburg.de/sonstiges/datenschutz/" title="Datenschutz">Privacy</a>
+        | <a href="/faq" title="FAQ">FAQ</a>
+    </small>
+</div>
+
+<!-- JQuery CDN -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- Popper.js (required for BootStrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- JS for BootStrap -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- JS for Datatables -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<!-- Custom JS -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

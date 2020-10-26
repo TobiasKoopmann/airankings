@@ -1,0 +1,96 @@
+Algeria,dz
+Argentina,ar
+Armenia,am
+Australia,au
+Austria,at
+Bangladesh,bd
+Belarus,by
+Belgium,be
+Bolivia,bo
+Brazil,br
+Brunei,bn
+Bulgaria,bg
+Canada,ca
+Chile,cl
+China,cn
+Colombia,co
+Costa Rica,cr
+Cuba,cu
+Cyprus,cy
+Czech Republic,cz
+Denmark,dk
+Ecuador,ec
+Egypt,eg
+Estonia,ee
+Faroe Islands,fo
+Fiji,fj
+Finland,fi
+France,fr
+Georgia,ge
+Germany,de
+Ghana,gh
+Greece,gr
+Hong Kong,hk
+Hungary,hu
+Iceland,is
+India,in
+Indonesia,id
+Iran,ir
+Iraq,iq
+Ireland,ie
+Israel,il
+Italy,it
+Japan,jp
+Jordan,jo
+Kazakhstan,kz
+Latvia,lv
+Lebanon,lb
+Lithuania,lt
+Luxembourg,lu
+Macau,mo
+Macedonia,mk
+Malaysia,my
+Mali,ml
+Malta,mt
+Mauritius,mu
+Mexico,mx
+Moldova,md
+Mongolia,mn
+Morocco,ma
+Namibia,na
+Netherlands,nl
+New Zealand,nz
+Norway,no
+Oman,om
+Pakistan,pk
+Panama,pa
+Paraguay,py
+Peru,pe
+Philippines,ph
+Poland,pl
+Portugal,pt
+Puerto Rico,pr
+Qatar,qa
+Romania,ro
+Russia,ru
+Saudi Arabia,sa
+Singapore,sg
+Slovakia,sk
+Slovenia,si
+South Africa,za
+Spain,es
+Sri Lanka,lk
+Sweden,se
+Switzerland,sw
+Taiwan,tw
+Thailand,th
+Tunisia,tn
+Turkey,tr
+UK,uk
+USA,us
+Ukraine,ua
+United Kingdom,uk
+United States,us
+Uruguay,uy
+Venezuela,ve
+Vietnam,vn

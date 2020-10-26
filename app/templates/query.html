@@ -1,0 +1,291 @@
+{% extends "body.html" %}
+
+{% block select_country %}
+    <select id="country" name="country" class="custom-select custom-select-sm col-md-2">
+        {% if country == 'all' %}
+            <option value="all" selected="selected">All</option>
+        {% else %}
+            <option value="all">All</option>
+        {% endif %}
+        {% for ctr in countries %}
+            {% if ctr == country %}
+                <option value="{{ ctr }}" selected="selected">{{ ctr }}</option>
+            {% else %}
+                <option value="{{ ctr}}">{{ ctr }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+{% endblock %}
+
+{% block options %}
+    <h4 class="pb-3 mb-4 font-italic border-bottom"> {{ lang["Select"] | safe }} </h4>
+    {% set all_checked= "" %}
+        {% if 'all' in selected %}
+            {% set all_checked= "checked" %}
+        {% else %}
+            {% set all_checked= " " %}
+        {% endif %}
+
+        <ul class="list-unstyled">
+            <li class="mb-3">
+                <input class="toggle-all" type="checkbox" name="cbox" value="all" {{ all_checked }}/>
+                <span class="ptitle font-weight-bold">{{ lang["Select all"] | safe }}</span>
+            </li>
+        {% for old_key in confs.keys() %}
+            {% set key = (old_key | replace("_", " ")).title() %}
+            {% if old_key in selected %}
+                {% set checked = "checked" %}
+            {% else %}
+                {% set checked = " " %}
+            {% endif %}
+            <li class="mb-3">
+                <fieldset>
+                    <div class="item">
+                        <input class="toggle-domain" type="checkbox" name="cbox" value="{{ old_key }}" id="{{ old_key }}" {{ checked }}>
+                        <label for="{{ old_key }}" class="ptitle font-weight-bold">{{ key }}</label>
+                    </div>
+                </fieldset>
+                <ul class="list-unstyled">
+
+
+            {% for item in confs[old_key] %}
+                {% if item in selected %}
+                    {% set checked= " checked" %}
+                {% else %}
+                    {% set checked= " " %}
+                {% endif %}
+                    <li class="pl-2">
+                    <fieldset>
+                        <div class="item">
+                            <input type="checkbox" class="{{ old_key }}" name="cbox" value="{{ item }}" {{checked}}>
+                            <span class="ptitle">{{ item }}</span>
+                        </div>
+                    </fieldset>
+                    </li>
+            {% endfor %}
+        {% endfor %}
+            </ul></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    {% set offset = (page-1)*40 %}
+        <!-- Search form -->
+    <div class="row">
+        <div class="col-10">
+            <div class="md-form mt-0 mb-3">
+                {%  if name != None %}
+                  <input value="{{ name }}" id="search" name="search" class="form-control" type="text" placeholder= " {{ lang['Search'] }}" aria-label="Search">
+                {% else %}
+                    <input id="search" name="search" class="form-control" type="text" placeholder="{{ lang['Search'] }}" aria-label="Search">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-1">
+            <h4>
+                <span class="create-shareable-link" style="cursor: pointer" title="Share your Ranking" data-toggle="modal" data-target="#shareableLinkModal">
+                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+            </h4>
+        </div>
+        <div class="col-1">
+            <h4>
+                <span id=download style="cursor: pointer" title="Download ranking">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                </span>
+            </h4>
+        </div>
+    </div>
+
+    <input type="hidden" value="{{ order_by }}" id="orderby" name="orderby"/>
+    <input type="hidden" value="{{ desc }}" id="orderdirection" name="orderdirection"/>
+
+    {% if search_all and not authors|length == 0 %}
+        <div class="alert alert-primary" role="alert">
+            Your search did not match any authors. We expanded the search to all countries.
+        </div>
+    {% endif %}
+
+    {% if authors|length == 0 %}
+        <div class="alert alert-danger" role="alert">
+            We could not find any results for your query, even when searching in all countries.
+        </div>
+    {% endif %}
+
+    <div class="d-flex justify-content-center" id="loading" style="visibility: hidden">
+        <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    {% if authors|length != 0 %}
+    <table id="query" class="table table-responsive table-striped table-hover order-column" style="visibility: visible">
+    <thead class="thead-dark">
+    <tr>
+        <th class="th-sm text-center">Rank</th>
+        {% if order_by == 'name' and desc == 'desc' %}
+            <th style="width: 30%" class="th-md text-center">Name <i style="cursor: pointer" class="fa fa-fw fa-sort-desc"></i></th>
+        {% elif order_by == 'name' and desc != 'desc' %}
+            <th style="width: 30%" class="th-md text-center">Name <i style="cursor: pointer" class="fa fa-fw fa-sort-asc"></i></th>
+        {% else %}
+            <th style="width: 30%" class="th-md text-center">Name <i style="cursor: pointer" class="fa fa-fw fa-sort"></i></th>
+        {% endif %}
+        {% if order_by == 'pubs' and desc == 'desc' %}
+            <th class="th-sm text-center">current Publications <i style="cursor: pointer" class="fa fa-fw fa-sort-desc"></i></th>
+        {% elif order_by == 'pubs' and desc != 'desc' %}
+            <th class="th-sm text-center">current Publications <i style="cursor: pointer" class="fa fa-fw fa-sort-asc"></i></th>
+        {% else %}
+            <th class="th-sm text-center">current Publications <i style="cursor: pointer" class="fa fa-fw fa-sort"></i></th>
+        {% endif %}
+        {% if order_by == 'total_pubs' and desc == 'desc' %}
+            <th class="th-sm text-center">all AI-Ranking Publications <i style="cursor: pointer" class="fa fa-fw fa-sort-desc"></i></th>
+        {% elif order_by == 'total_pubs' and desc != 'desc' %}
+            <th class="th-sm text-center">all AI-Ranking Publications <i style="cursor: pointer" class="fa fa-fw fa-sort-asc"></i></th>
+        {% else %}
+            <th class="th-sm text-center">all AI-Ranking Publications <i style="cursor: pointer" class="fa fa-fw fa-sort"></i></th>
+        {% endif %}
+        {% if order_by == 'h_index' and desc == 'desc' %}
+            <th class="th-sm text-center">AI <span style="border-bottom: 1px dotted white;" title="The h-Index, defined as the number of papers with
+            citation number ≥h, as a useful index to characterize the scientific output of a researcher.">
+                <i>h</i>-Index</span><i style="cursor: pointer" class="fa fa-fw fa-sort-desc"></i></th>
+        {% elif order_by == 'h_index' and desc != 'desc' %}
+        <th class="th-sm text-center">AI <span style="border-bottom: 1px dotted white;"
+                                               title="The h-Index, defined as the number of papers with citation number ≥h, as a useful index to characterize the scientific output of a researcher."><i>h</i>-Index</span><i
+                style="cursor: pointer" class="fa fa-fw fa-sort-asc"></i></th>
+        {% else %}
+        <th class="th-sm text-center">AI <span style="border-bottom: 1px dotted white;"
+                                               title="The h-Index, defined as the number of papers with citation number ≥h, as a useful index to characterize the scientific output of a researcher."><i>h</i>-Index</span><i
+                style="cursor: pointer" class="fa fa-fw fa-sort"></i></th>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for author in authors %}
+    <tr>
+        <td align="center">{{ author[0] }}</td>
+        <td>
+            <a href="/author?name={{ author[1] }}">{{ author[2] }}</a>&nbsp;
+            <a href="{{ author[7]['dblp'] }}" target="_blank"><img
+                    src="{{ url_for('static', filename='image/dblp.png') }}" width="16px" height="16px"></a>&nbsp;
+            {% if author[7]['gs'] %}
+            <a href="{{ author[7]['gs'] }}" title="Google Scholar" target="_blank"><img alt="Google Scholar"
+                                                                                        src="{{ url_for('static', filename='image/scholar-favicon.ico') }}"
+                                                                                        width="16px" height="16px"></a>&nbsp;
+            {% endif %}
+            {% if author[7]['orcid'] %}
+            <a href="{{ author[7]['orcid'] }}" title="ORCID" target="_blank"><img alt="ORCID"
+                                                                                  src="{{ url_for('static', filename='image/orcid.gif') }}"
+                                                                                  width="16px" height="16px"></a>&nbsp;
+            {% endif %}
+            {% if author[7]['linkedin'] %}
+            <a href="{{ author[7]['linkedin'] }}" title="LinkedIn" target="_blank"><img alt="LinkedIn"
+                                                                                        src="{{ url_for('static', filename='image/linkedin.png') }}"
+                                                                                        width="16px" height="16px"></a>&nbsp;
+            {% endif %}
+            {% if author[7]['twitter'] %}
+            <a href="{{ author[7]['twitter'] }}" title="Twitter" target="_blank"><img alt="Twitter"
+                                                                                      src="{{ url_for('static', filename='image/Twitter_Logo_Blue.png') }}"
+                                                                                      width="16px" height="16px"></a>&nbsp;
+            {% endif %}
+        </td>
+        <td align="center">{{ author[3] }}</td>
+        <td align="center">{{ author[4] }}</td>
+        {#
+        <td align="center">{{ author[5] }}</td>
+        #}
+        <td align="center">{{ author[6] }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    {% endif %}
+
+    {% set total_page = author_count // 40 + 1 %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 p-3 text-center">
+                {% if offset + 1 < author_count %}
+                    {% set count_start = offset + 1 %}
+                {% else %}
+                    {% set count_start = author_count %}
+                {% endif %}
+                {% if offset + 40 < author_count %}
+                    {% set count_end = offset + 40 %}
+                {% else %}
+                    {% set count_end = author_count %}
+                {% endif %}
+                {{ lang["showing result"] | safe }} {{ count_start }} {{ lang["to"] | safe}} {{ count_end }} {{ lang["of"] | safe }} {{ author_count }}
+                ({{ lang["page"] | safe }} {{ page }} {{ lang["of"] | safe }} {{ total_page }})
+            </div>
+        </div>
+        <div class="row">
+            {% if page < 10 %}
+                {% set page_start = 1 %}
+                {% set page_end = 10 %}
+            {% elif page > total_page - 10 %}
+                {% set page_start = total_page - 10 %}
+                {% set page_end = total_page %}
+            {% else %}
+                {% set page_start = page - 5 %}
+                {% set page_end = page + 5 %}
+            {% endif %}
+            {% if total_page < 10 %}
+                {% set page_end = total_page %}
+            {% endif %}
+            <nav aria-label="Search results pages" class="col-12">
+                <ul class="pagination justify-content-center">
+                    {% if page == 1 %}
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-hidden="true">&laquo;</span>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link"  aria-hidden="true">&laquo;</a>
+                        </li>
+                    {% endif %}
+                    {% if page == 1 %}
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link"  aria-hidden="true">&lsaquo;</a>
+                        </li>
+                    {% endif %}
+                    {% for i in range(page_start, page_end + 1) %}
+                        {% if i == page %}
+                            <li class="page-item active">
+                                <span class="page-link">
+                                    {{ i }}
+                                    <span class="sr-only">(current)</span>
+                                </span>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" >{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page == total_page %}
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-hidden="true">&rsaquo;</span>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link"  aria-hidden="true">&rsaquo;</a>
+                        </li>
+                    {% endif %}
+                    {% if page == total_page %}
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-hidden="true">&raquo;</span>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" value={{total_page}} aria-hidden="true">&raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+{% endblock %}

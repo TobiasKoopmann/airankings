@@ -1,0 +1,69 @@
+{
+  "ger":
+    {
+      "nav-link dropdown-toggle": "W&auml;hle Teilgebiet",
+      "headline": "K.I. Autorenranking",
+      "background-tag": "Hintergrund: ",
+      "background": "A.I. Rankings ist ein Tool, um eine anpassbare Rangliste von KI Autoren basierend auf dem <a href=\"https://dblp.uni-trier.de\">DBLP</a> Publikationsdatensatz zu generieren. Die Seite wird mit Unterst&uuml;tzung der <a href=\"https://www.uni-wuerzburg.de/startseite/\">Universit&auml;t W&uuml;rzburg</a> und des BMBF Projekt <a href=\"https://www.regio-project.org\">REGIO</a> betrieben. Mit zunehmenden Interesse in KI und KI Forschung haben <a href=\"https://ml-research.github.io/people/kkersting/index.html\">Kristian Kersting</a> (TU Darmstadt) und <a href=\"http://www.dmir.uni-wuerzburg.de/staff/hotho/\">Andreas Hotho</a> (Universit&auml;t W&uuml;rzburg) auf die Idee, ein Wekzeug zu entwickeln um einfach nach verschiedenen KI Teilbereichen geordneten Forschungsaktivit&auml;ten zu suchen. W&auml;hrend DBLP die Liste der Publikationen bereitstellt, wurden die Informationen &uuml;ber die Zitate &uuml;ber den <a href=\"https://api.semanticscholar.org/corpus/download/\">Semantic Scholar</a> Datensatz einbezogen. Bitte denken Sie daran, dass dieses Datenmaterial unabh&auml;ngig von zum Beispiel Google Scholar ist und somit sich die <span style=\"border-bottom: 1px dotted black;\" title=\"Der h-Index ist definiert als die Nummer der Papers mit einer Anzahl an Zitaten ≥h, als ein n&uuml;tzlicher Index um den wissenschaftlichen Output eines Forscher zu charakterisieren.\">\n  <i>h</i>-Index\n </span> unterscheiden k&ouml;nnen. Um auf die Google Scholar Seite eines Autoren zu gelangen, klicken Sie bitte auf das zugeh&ouml;rige Symbol. F&uuml;r weitere Informationen &uuml;ber das Datenmaterial besuchen Sie bitte unser <a href=\"/faq\">FAQ</a>. Falls Konferenzen fehlen oder Sie auf weitere Probleme gesto&szlig;en sind, schreiben Sie uns bitte eine <a href=\"javascript:window.location.href = 'mailto:' + ['airankings','informatik.uni-wuerzburg.de'].join('@')\">Mail</a>  ",
+      "Usage-tag": "Benutzung: ",
+      "Usage": "Zuerst w&auml;hlen Sie bitte das Land und die Zeitspanne, f&uuml;r die sie das Ranking ausf&uuml;hren wollen. Danach klicken sie die pr&auml;ferierten Konferenzen oder Journals auf der linken Seite an (Standard ist 'Core')",
+      "Usagenote": "Klicken Sie auf den Namen eines Autoren um dessen Details zu &ouml;ffnen. Ein Klick auf die Icons neben dem Namen f&uuml;hrt sie zu der jeweiligen Autorenseite",
+      "Select": "W&auml;hle hier",
+      "Select all": "W&auml;hle alle",
+      "Rank": "Rang",
+      "current Publications": "aktuelle Publikationen",
+      "all Ai-Ranking- Publications": "alle AI-Ranking Publikationen",
+      "selected h-index": " gew&auml;hlter <span title=\"Der h-Index ist definiert als die Nummer der Papers mit einer Anzahl an Zitaten ≥h, als ein n&uuml;tzlicher Index um den wissenschaftlichen Output eines Forscher zu charakterisieren.\" style=\"border-bottom: 1px dotted white;\"><i>h</i>-Index</span> ",
+      "AI h-index": "AI <span title=\"Der h-Index ist definiert als die Nummer der Papers mit einer Anzahl an Zitaten ≥h, als ein n&uuml;tzlicher Index um den wissenschaftlichen Output eines Forscher zu charakterisieren.\" style=\"border-bottom: 1px dotted white;\"><i>h</i>-Index</span>",
+      "showing result": "Zeige Ergebnis",
+      "to": "bis",
+      "of": "von",
+      "page": "Seite",
+      "Website created": "Website erstellt in Zusammenhang des <a href=\"https://www.regio-project.org\">REGIO Project</a> ",
+      "Select Language": "Sprache w&auml;hlen",
+      "Search": "Suche ('&' fuer mehrere Autoren)",
+      "authorpage-publications": "Publikationen",
+      "authorpage-venue": "Konferenzen",
+      "authorpage-affiliation": "Zugeh&ouml;rigkeit",
+      "authorpagetableVenue": "Konferenz",
+      "authorpagetableYear": "Jahr",
+      "authorpagetableCits": "Zitate",
+      "authorpageAdditionalInfos": "Zus&aumltzliche Information"
+    }
+  ,
+  "eng":
+    {
+      "nav-link dropdown-toggle": "Select Sub-domain",
+      "headline": "A.I. Author Rankings by Publications",
+      "background-tag": "Background: ",
+      "background": "\n                        AI-Rankings is a tool to create customizable AI Researcher rankings based on the <a href=\"https://dblp.uni-trier.de\">DBLP</a> publication dataset.\n                        The page is set up with support of the <a href=\"https://www.uni-wuerzburg.de/startseite/\">University of W&uuml;rzburg</a> and the BMBF project <a href=\"https://www.regio-project.org\">REGIO</a>.\n                        With the ongoing interest in AI and AI research, <a href=\"https://ml-research.github.io/people/kkersting/index.html\">Kristian Kersting</a> (TU Darmstadt) and <a href=\"http://www.dmir.uni-wuerzburg.de/staff/hotho/\">Andreas Hotho</a> (Universit&auml;t W&uuml;rzburg) came up with the idea of this tool, which allows for an easy check of research activities in different AI research domains.\n                        While DBLP provides the basic list of publications, citation information is added using the <a href=\"https://api.semanticscholar.org/corpus/download/\">Semantic Scholar</a>  dataset.\n                        Please keep in mind that this dataset is independent of Google Scholar and in the consequence/ therefore\n                        <span style=\"border-bottom: 1px dotted black;\" title=\"The h-Index is defined as the number of papers with citation number ≥h, as a useful index to characterize the scientific output of a researcher.\">\n                            <i>h</i>-Indexes\n                        </span>\n                        will be different. For the Google Scholar Citations page of an author, please follow the Google Scholar icon.\n                        For further information about the dataset, please visit our <a href=\"/faq\">FAQ</a>. <br>\n                        In case of missing conferences or other issues that should be addressed, please <a href=\"javascript:window.location.href = 'mailto:' + ['airankings','informatik.uni-wuerzburg.de'].join('@')\">email us</a>.\n                    </p>",
+      "Usage-tag": "Usage: ",
+      "Usage": "\n                        First, please choose the country and timespan for which you would like to conduct the author ranking.\n                        Then toggle the conferences or journals which you are interested in on the left side to complete the list (default is 'Core').\n                    ",
+      "Usagenote": "\n                            Click on an author name to open the author's details. Click on the icons beside the author's name open the respective website.\n                        ",
+      "Select": "Select here",
+      "Select all": "Select all",
+      "Rank": "Rank",
+      "current Publications": "current Publications",
+      "all Ai-Ranking- Publications": "all AI-Ranking Publications",
+      "selected h-index": " selected <span title=\"The h-Index, defined as the number of papers with citation number ≥h, as a useful index to characterize the scientific output of a researcher..\" style=\"border-bottom: 1px dotted white;\"><i>h</i>-Index</span> ",
+      "AI h-index": "AI <span title=\"The h-Index, defined as the number of papers with citation number ≥h, as a useful index to characterize the scientific output of a researcher..\" style=\"border-bottom: 1px dotted white;\"><i>h</i>-Index</span>",
+      "showing result": "showing result",
+      "to": "to",
+      "of": "of",
+      "page": "page",
+      "Website created": "website created in context of the <a href=\"https://www.regio-project.org\">REGIO Project</a> ",
+      "Select Language": "Select language",
+      "Search": "Search ('&' for multiple)",
+      "authorpage-publications": "publications",
+      "authorpage-venue": "venues",
+      "authorpage-affiliation":"Affiliation",
+      "authorpagetableVenue": "Venue",
+      "authorpagetableYear": "Year",
+      "authorpagetableCits": "citations",
+      "authorpageAdditionalInfos": "Additional Information"
+    }
+
+}
+
+
+

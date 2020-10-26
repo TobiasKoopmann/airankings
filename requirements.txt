@@ -1,0 +1,11 @@
+flask~=1.1.2
+gevent==20.6.2
+python-dotenv
+tqdm~=4.48.2
+lxml~=4.5.2
+numpy~=1.19.1
+scholarmetrics~=0.2.1
+mysql-connector-python~=8.0.21
+requests~=2.24.0
+pandas~=1.1.0
+pytest~=6.1.1

@@ -1,0 +1,9 @@
+#Files not being added to the git repo
+.idea
+.DS_Store
+.vscode
+venv
+kubernetes
+data/
+__pycache__
+.dockerignore

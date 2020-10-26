@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row bg-light">
+            <div class="col-12 text-center py-5">
+                <h1 class="display-3">Frequently asked Questions</h1>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <div class="row mb-5">
+                <div class="col-md-3">
+                    <b>How do we generate our dataset? </b>
+                </div>
+                <div class="col-md-9 text-left">
+                    We extract publication information from the <a href="https://dblp.uni-trier.de">DBLP</a> dataset (currently <a href="https://dblp.org/xml/release/">2020-01-01</a>).
+                    Based on this XML, we extract all publications published on one of the conferences listed on the main page.
+                    This list originated from <a href="https://arxiv.org/pdf/1903.09516.pdf">recent work</a> by <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters">Jan Peters</a>, <a href="https://www.pip.tu-darmstadt.de/members/constantin_a___rothkopf/publications.de.jsp">Constantin A. Rothkopf</a> and <a href="https://ml-research.github.io/people/kkersting/index.html">Kristian Kersting</a>.
+                    After extracting publications located in the research domain "Artificial Intelligence", we extract all authors and search for further information (e.g. country, affiliation and URLs) in the DBLP.xml.
+                    Finally we match all publications with the open available <a href="https://api.semanticscholar.org/corpus/download/">Semantic Scholar</a> dataset (currently the release from 2019-11-01) in order to add information about the  in citations.
+                    These are used to calculate the <i>h</i>-Index based on AI publications. <br/>
+                    Due to the fact, that Semantic Scholar contains the DBLP as one of their sources, it is possible to match a majority of the publication using only the title and year information.
+                    We decided to use publication year information, due to matching single DBLP publication to multiple Semantic Scholar publications in different years.
+                    We found them to be either journal extensions or ArXiv publications.
+                    We decided against matching the conference/journal names, due to the fact, that the disambiguation is very hard (both dataset use different abbreviations).
+                    Please keep in mind that that the Semantic Scholar contains different citation information that e.g. the Google scholar, hence our <i>h</i>-Index might differ from other sources.
+                    For the Google Scholar Citations page of an author, please follow the Google Scholar icon.
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-3" id="hindex">
+                    <b>Can I share my search with a friend?</b>
+                </div>
+                <div class="col-md-9 text-left">
+                    On the main page next to the search bar is a  <i class="fa fa-share-alt" aria-hidden="true"></i>  icon.
+                    Clicking on it opens a popup with a link, which allows to share the current search.
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-3" id="hindex">
+                    <b>Why can't i find myself in the ranking?</b>
+                </div>
+                <div class="col-md-9 text-left">
+                    This can have different reasons. As explain above, we exact all Author and Publication information from the <a href="https://dblp.uni-trier.de">DBLP</a>.
+                    Hence you can only be in the ranking, if you are listed in the DBLP and have published on one of the given conferences. <br/>
+                    If you still cannot find yourself, please double check if you are listed without country information (select 'all' countries).
+                    Finally, if this does not work, please <a href="javascript:window.location.href = 'mailto:' + ['airankings','informatik.uni-wuerzburg.de'].join('@')">contact us</a>.
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-3" id="hindex">
+                    <b>Why am I listed without country information?</b>
+                </div>
+                <div class="col-md-9 text-left">
+                    Similar to the points above, we extract out information (also Affiliation and country) from DBLP.
+                    If the DBLP has no listed affiliation (or the affiliation does not contain a country name), we are unable to assign you to a country.
+                    To fix this issue, please <a href="https://dblp.uni-trier.de/faq/1474623.html">contact</a> the DBLP. <br/>
+                    We are currently searching for further opportunities to collect country information, e.g. the Orcid.
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-3" id="hindex">
+                    <b>What is the <i>h</i>-Index?</b>
+                </div>
+                <div class="col-md-9 text-left">
+                    The <a href="https://en.wikipedia.org/wiki/H-index"><i>h</i>-Index</a> is defined as the number of papers with citation number ≥h. It is one useful index to characterize the scientific output of a researcher. <br/>
+                    Please keep in mind that we extract citation information from Semantic Scholar and this is independent of Google Scholar and in the consequence/ therefore <i>h</i>-Indexes will be different. <br/>
+                    <small>
+                        (Hirsch, J. E. (2005). An index to quantify an individual’s scientific research output. Proceedings of the National Academy of Sciences of the United States of America, 102(46), 16569.)
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
